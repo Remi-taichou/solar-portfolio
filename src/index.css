@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* Colours, fonts and the phone breakpoint, usable as Tailwind classes like text-dim or font-display. */
+@theme {
+  --color-void: #05060d;
+  --color-ink: #f3f1ea;
+  --color-dim: #b4b8c6;
+  --color-sol: #ffc067;
+  --color-luna: #d3dbec;
+  --color-line: rgba(205, 212, 235, .24);
+  --font-display: "Bartomes", "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --breakpoint-desk: 701px;
+}
+
+/* short: applies on very short screens, such as phones held sideways. */
+@custom-variant short (@media (max-height: 560px));
+
+@font-face {
+  font-family: "Bartomes";
+  src: url("/fonts/Bartomes.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* Page-wide colours and text. These stay outside Tailwind's layers on purpose, so no other
+   stylesheet on the host page (such as the private preview's white default) can override them. */
+:root {
+  color-scheme: dark;
+  --gutter-l: max(clamp(16px, 6vw, 96px), env(safe-area-inset-left, 0px));
+  --gutter-r: max(clamp(16px, 6vw, 96px), env(safe-area-inset-right, 0px));
+}
+html { background: var(--color-void); }
+body {
+  overflow-x: clip;
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+}
+.no-gl body { background: radial-gradient(circle at 75% 20%, #2a1b12, var(--color-void) 55%); }
+
+@layer base {
+  button { cursor: pointer; }
+  :focus-visible { outline: 1px solid var(--color-ink); outline-offset: 4px; }
+}
+
+/* Small labels in capitals. */
+@utility label {
+  font-size: .75rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Text shadows that keep words readable over the 3D scene. */
+@utility text-shadow-dark { text-shadow: 0 0 14px rgba(5, 6, 13, .95), 0 0 3px rgba(5, 6, 13, .8); }
+@utility text-shadow-copy { text-shadow: 0 0 22px rgba(5, 6, 13, .9), 0 0 4px rgba(5, 6, 13, .6); }
+@utility text-shadow-space { text-shadow: 0 0 8px var(--color-void), 0 0 3px var(--color-void); }
+
+/* The few things that need plain CSS: safe areas on phones, gradients, the launch and the slider. */
+@layer components {
+  .page-header {
+    padding: calc(20px + env(safe-area-inset-top, 0px)) max(clamp(16px, 3vw, 40px), env(safe-area-inset-right, 0px)) 0 max(clamp(16px, 3vw, 40px), env(safe-area-inset-left, 0px));
+  }
+  .page-footer {
+    padding: 0 max(16px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  }
+  .rail { right: max(16px, env(safe-area-inset-right, 0px)); }
+  .skip-button {
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* The selected header link: bright white with a glow and an underline. */
+  .nav-link:active, .nav-link[aria-current="true"] {
+    color: #fff;
+    border-bottom-color: #fff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .8), 0 0 3px rgba(255, 255, 255, .55);
+  }
+
+  /* Links and buttons stay clickable inside text that otherwise lets clicks pass through to the planets. */
+  .stop-copy a, .stop-copy button { pointer-events: auto; }
+
+  /* A soft shade behind the text keeps it readable when a planet drifts past. */
+  .shade-left { background: linear-gradient(90deg, rgba(5, 6, 13, .78), rgba(5, 6, 13, .55) 36%, transparent 56%); }
+  .shade-right { background: linear-gradient(270deg, rgba(5, 6, 13, .78), rgba(5, 6, 13, .55) 36%, transparent 56%); }
+  @media (max-width: 700px) {
+    .shade-left, .shade-right { background: linear-gradient(0deg, rgba(5, 6, 13, .82), rgba(5, 6, 13, .6) 38%, transparent 58%); }
+    .shade-role { background: linear-gradient(0deg, rgba(5, 6, 13, .94), rgba(5, 6, 13, .86) 70%, rgba(5, 6, 13, .3) 86%, transparent); }
+  }
+
+  /* The little line under "Scroll to fly through". */
+  .scroll-cue-line {
+    display: block; width: 1px; height: 14px; margin: 5px auto 0;
+    background: linear-gradient(var(--color-dim), transparent);
+    transform-origin: top;
+    animation: cue-drop 2.2s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .scroll-cue-line { animation: none; } }
+
+  /* Labels on 3D bodies. */
+  .body-label.mini span { top: calc(100% + 2px); opacity: 1; }
+  .body-label.bright span { top: calc(100% + 20px); opacity: 1; text-shadow: 0 0 10px var(--color-void), 0 0 4px var(--color-void), 0 0 2px var(--color-void); }
+  @media (max-width: 700px) { .body-label.mini span { display: none; } }
+
+  /* The dots on the right edge. */
+  .rail-dot i {
+    display: block; width: 6px; height: 6px; border-radius: 50%; opacity: .4;
+    transition: transform .35s cubic-bezier(.2, .8, .2, 1), opacity .25s;
+  }
+  .rail-dot:hover i { opacity: 1; transform: scale(1.5); }
+  .rail-dot[aria-current="true"] i { opacity: 1; transform: scale(1.9); }
+
+  /* The sun-to-moon slider. The engine sets --t from 0 to 1 as it moves. */
+  .mode-slider {
+    --t: 0;
+    --thumb: color-mix(in oklab, var(--color-sol), var(--color-luna) calc(var(--t) * 100%));
+    appearance: none;
+    width: min(210px, 36vw);
+    height: 44px;
+    background: transparent;
+    cursor: grab;
+    touch-action: none;
+  }
+  .mode-slider:active { cursor: grabbing; }
+  .mode-slider::-webkit-slider-runnable-track { height: 1px; background: linear-gradient(90deg, var(--color-sol), var(--color-luna)); }
+  .mode-slider::-moz-range-track { height: 1px; background: linear-gradient(90deg, var(--color-sol), var(--color-luna)); }
+  .mode-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px; height: 26px; margin-top: -12.5px; border: 0; border-radius: 50%;
+    background: var(--thumb);
+    box-shadow: 0 0 20px 4px var(--thumb);
+    transition: scale .2s;
+  }
+  .mode-slider:active::-webkit-slider-thumb { scale: 1.2; }
+  .mode-slider::-moz-range-thumb {
+    width: 26px; height: 26px; border: 0; border-radius: 50%;
+    background: var(--thumb);
+    box-shadow: 0 0 20px 4px var(--thumb);
+  }
+
+  /* The rocket launch: the whole interface waits until the rocket reaches the sun. */
+  .ui-layer { transition: opacity 1s ease; }
+  .launching, .launching body { overflow: hidden; }
+  .launching .ui-layer { opacity: 0; pointer-events: none; }
+
+  /* Shown only if a device cannot run 3D: the same content as a plain page. */
+  .no-gl .sky-canvas, .no-gl .rail, .no-gl .overview-inner { display: none; }
+  .no-gl [data-stop] { height: auto; }
+  .no-gl [data-stop-inner] { position: static; height: auto; padding-block: 60px; opacity: 1 !important; transform: none !important; }
+  .no-gl main { padding-block: 90px 80px; }
+}
+
+@keyframes cue-drop {
+  0%, 100% { transform: scaleY(.45); }
+  50% { transform: scaleY(1); }
+}
