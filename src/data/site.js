@@ -39,7 +39,7 @@ export const SITE = {
         ["Languages", "JavaScript (ES6+), Python, Java, SQL, C/C++, R, PHP, HTML5, CSS3"],
         ["Front-end", "React, Vite, HTML5, CSS3, JavaScript"],
         ["Frameworks & libraries", "Node.js, Flask, Django, Streamlit, WordPress, TensorFlow, NumPy, Pandas, Qiskit"],
-        ["Tools", "Git/GitHub, Vercel, GitHub Pages, VS Code, IntelliJ, PyCharm, Jupyter Notebook, Unix/Linux, virtual machines"],
+        ["Tools", "Git/GitHub, Vercel, GitHub Pages, VS Code, IntelliJ, PyCharm, Jupyter Notebook, Unix/Linux, virtual machines, Claude Code, prompting"],
         ["Design", "Figma, Canva, wireframing, responsive layout, visual hierarchy, logo, poster and flyer design"],
         ["Concepts", "Component architecture, React hooks, responsive design, accessibility basics, continuous deployment, data structures and algorithms, object-oriented programming, system design"],
         ["Working with people", "Customer service, team collaboration, time management, problem-solving"],
