@@ -165,7 +165,7 @@ function setNightStops(path, state, isPhone) {
   const moon = world.moonRest;
   toEye.copy(world.eclipsePos).sub(moon).normalize();
 
-  path.nightPos[0].copy(moon).addScaledVector(toEye, MOON_R * (isPhone ? 17.5 : 15));
+  path.nightPos[0].copy(moon).addScaledVector(toEye, MOON_R * (isPhone ? 19 : 16.5));
   path.nightPos[0].y += isPhone ? 4 : 2;
   path.nightLook[0].copy(moon);
   shiftFraming(path.nightPos[0], path.nightLook[0], isPhone ? 3.2 : 5.6, true, isPhone);

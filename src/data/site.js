@@ -7,6 +7,8 @@
     surface: ocean, rust, banded, ringed, ice or lava.
     size:    relative planet size, about 0.02 to 0.05.
     links:   buttons under the project. Leave the list empty to show none.
+    short:   optional shorter name for the label beside the planet.
+    badge, event, context: optional, for a hackathon or other event project.
 
   moon.interests: planets orbiting the moon.
     surface: bleach, blaugrana, kombat, vinyl, lava, ocean, rust, banded or ice.
@@ -29,9 +31,21 @@ export const SITE = {
   },
   moon: {
     title: "Me, after hours",
-    intro: "When the work is done, you'll find me watching anime and movies, playing soccer, on a console or listening to music.",
-    // Planets orbiting the moon. surface: bleach, blaugrana, kombat, vinyl, lava, ocean, rust, banded or ice. size: about 0.03 to 0.06.
+    intro: "When the work is done, you'll find me watching anime and movies, playing soccer, on a console or listening to music. I've also built and volunteered at hackathons.",
+    // Planets orbiting the moon. surface: circuit, bleach, blaugrana, kombat, vinyl, lava, ocean, rust, banded or ice. size: about 0.03 to 0.06.
+    // Give a planet `summary` for a sentence, or `groups` for a labelled list like Skills.
     interests: [
+      { name: "Skills", surface: "circuit", size: .05, color: "#6fe3d0", groups: [
+        ["Languages", "JavaScript (ES6+), Python, Java, SQL, C/C++, R, PHP, HTML5, CSS3"],
+        ["Front-end", "React, Vite, HTML5, CSS3, JavaScript"],
+        ["Frameworks & libraries", "Node.js, Flask, Django, Streamlit, WordPress, TensorFlow, NumPy, Pandas, Qiskit"],
+        ["Tools", "Git/GitHub, Vercel, GitHub Pages, VS Code, IntelliJ, PyCharm, Jupyter Notebook, Unix/Linux, virtual machines"],
+        ["Design", "Figma, Canva, wireframing, responsive layout, visual hierarchy, logo, poster and flyer design"],
+        ["Concepts", "Component architecture, React hooks, responsive design, accessibility basics, continuous deployment, data structures and algorithms, object-oriented programming, system design"],
+        ["Working with people", "Customer service, team collaboration, time management, problem-solving"],
+        ["Spoken languages", "English, French (DELF certified)"],
+        ["Certifications", "Food Safety, WHMIS, Figma for Edu"],
+      ] },
       { name: "Anime & Movies", summary: "My favourite anime is Bleach.", surface: "bleach", size: .052, color: "#ff6a5c" },
       { name: "Soccer", summary: "I love playing soccer. My favourite team of all time was 09 Barca.", surface: "blaugrana", size: .05, color: "#c9405f" },
       { name: "Games", summary: "I like playing games, console specifically. My favourite is Mortal Kombat.", surface: "kombat", size: .054, color: "#f0b23e" },
@@ -96,19 +110,20 @@ export const SITE = {
     ],
   },
   projects: [
-    { name: "Personal Portfolio Website", year: "2026", stack: "HTML, CSS, GitHub Pages", surface: "ocean", size: .036, color: "#7cc0ee",
-      links: [{ label: "View site", url: "https://remi-taichou.github.io/Portfolio" }], points: [
-        "Designed and built a personal developer portfolio to showcase web development and design projects, applying HTML/CSS fundamentals",
-        "Structured site content using core HTML concepts including page layout, semantic tags, attributes, images, and tables",
-        "Deployed via GitHub Pages, with ongoing refinement of site copy and design ahead of full launch",
+    { name: "Personal Portfolio Website", date: "Oct 2026 – Present", stack: "React, JavaScript, Vite, CSS, Git, Vercel", surface: "ocean", size: .036, color: "#7cc0ee",
+      links: [{ label: "Live site", url: "https://remitaichou.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Portfolio-v2" }], points: [
+        "Built and deployed a responsive portfolio in React (Vite) using reusable components that render from a single project data array",
+        "Implemented a mobile navigation menu and a project category filter with `useState`, plus a scrollable project carousel using `useRef`",
+        "Created a canvas-based lightning and rain animation with `useEffect` cleanup and `prefers-reduced-motion` support",
+        "Set up continuous deployment through GitHub and Vercel, so every push to main publishes automatically",
       ] },
-    { name: "Beat the Quantum", year: "2026", stack: "Python, Qiskit, Streamlit, Pandas, Git, GitHub", surface: "ringed", size: .042, color: "#efdda9",
-      links: [{ label: "Play the game", url: "https://beatthequantum.streamlit.app" }, { label: "View code", url: "https://github.com/Remi-taichou/Quollab-Hackathon" }], points: [
-        "Built a CHSH game for the Qollab Quantum Hackathon: entangled qubits reach ~85% win rate vs. the 75% classical limit",
-        "Ran Bell-pair circuits on IonQ's cloud simulator via Qiskit and used the measured shots to drive the game",
-        "Built a Streamlit app with live win-rate and per-input charts; open-sourced under MIT with a demo video",
+    { name: "Beat the Quantum: CHSH Quantum Game", short: "Beat the Quantum", date: "Oct 2026", stack: "Python, Streamlit, Git", surface: "ringed", size: .042, color: "#efdda9",
+      badge: "Hackathon", event: "Global Qollab Quantum Hackathon", context: "Built for the Global Qollab hackathon",
+      links: [{ label: "Play the game", url: "https://beatthequantum.streamlit.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Quollab-Hackathon" }], points: [
+        "Designed, built, and published a CHSH-game web app solo for the Global Qollab quantum hackathon, including the quantum logic, interface, and demo video",
+        "Deployed on Streamlit Community Cloud with source on GitHub, and submitted before the deadline",
       ] },
-    { name: "Activate Arcade Website", year: "2026", stack: "HTML, CSS, Linux, SSH/SCP, Git, GitHub Pages", surface: "banded", size: .05, color: "#e6bf92",
+    { name: "Activate Arcade Website", date: "2026", stack: "HTML, CSS, Linux, SSH/SCP, Git, GitHub Pages", surface: "banded", size: .05, color: "#e6bf92",
       links: [{ label: "View site", url: "https://remi-taichou.github.io/activate-arcade-site/" }], points: [
         "Built a 4-page HTML/CSS website incorporating forms, tables, and picture-based navigation, achieving full marks in the Web Development course",
         "Structured and styled multiple pages for consistent layout and navigation across the site",

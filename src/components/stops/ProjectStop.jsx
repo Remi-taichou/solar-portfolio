@@ -7,8 +7,14 @@ export default function ProjectStop({ project, index, total }) {
 
   return (
     <Stop isLong side={index % 2 ? 'right' : 'left'} accent={project.color} eyebrow={orbitLabel}>
+      {project.badge && <Badge>{project.badge}</Badge>}
       <StopTitle isCompact>{project.name}</StopTitle>
-      <FactList rows={[['Year', project.year], ['Built with', project.stack]]} />
+      {project.context && <p className="mb-3 max-w-136 text-dim">{project.context}</p>}
+      <FactList rows={[
+        ['Date', project.date],
+        ...(project.event ? [['Event', project.event]] : []),
+        ['Built with', project.stack],
+      ]} />
       <BulletPoints points={project.points} hasDivider={false} />
       {links.length > 0 && (
         <p className="mt-3.5 flex flex-wrap gap-x-5 gap-y-2">
@@ -20,5 +26,14 @@ export default function ProjectStop({ project, index, total }) {
         </p>
       )}
     </Stop>
+  );
+}
+
+// A small outlined tag above the title, such as "Hackathon".
+function Badge({ children }) {
+  return (
+    <span className="label mb-3 inline-block rounded-full border border-(--accent) px-2.5 py-1 text-[.6875rem] text-(--accent)">
+      {children}
+    </span>
   );
 }

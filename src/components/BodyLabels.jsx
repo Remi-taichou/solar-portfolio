@@ -4,7 +4,7 @@ export default function BodyLabels({ site, containerRef, inert, onSelect, onHove
   const labels = [
     { key: 'sun', text: 'By day', aria: 'The sun: me by day' },
     { key: 'star', text: 'Experience', aria: 'The bright star: my experience', variant: 'bright' },
-    ...site.projects.map((project, i) => ({ key: `planet-${i}`, text: project.name, aria: `Fly to ${project.name}` })),
+    ...site.projects.map((project, i) => ({ key: `planet-${i}`, text: project.short ?? project.name, aria: `Fly to ${project.name}` })),
     ...site.experience.roles.map((role, i) => ({ key: `mini-${i}`, text: role.short, aria: `Open ${role.role}`, variant: 'mini' })),
     ...site.moon.interests.map((interest, i) => ({ key: `interest-${i}`, text: interest.name, aria: `Fly to ${interest.name}` })),
   ];

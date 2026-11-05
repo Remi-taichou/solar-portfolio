@@ -14,7 +14,7 @@ function buildRailStops(site) {
   return [
     { name: 'Overview', color: '#f3f1ea' },
     { name: 'The Sun', color: '#ffc067' },
-    ...site.projects.map((project) => ({ name: project.name, color: project.color })),
+    ...site.projects.map((project) => ({ name: project.short ?? project.name, color: project.color })),
     { name: 'Experience', color: '#bfe2ff' },
     ...site.experience.roles.map((role) => ({ name: role.role, color: role.color })),
     { name: 'Contact', color: '#f3f1ea' },

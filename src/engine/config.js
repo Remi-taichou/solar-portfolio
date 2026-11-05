@@ -78,7 +78,7 @@ export function createBodies(site) {
     kind: 'interest',
     index: i,
     angle: 0.9 + i * 1.75,
-    orbit: 4.3 + i * 1.35,
+    orbit: 4.3 + i * 1.2,
     radius: interest.size * 13,
     hover: 0,
     hoverK: 0,

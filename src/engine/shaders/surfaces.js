@@ -37,6 +37,15 @@ export const SURFACES = {
     vec3 c=mix(vec3(.05,.03,.03),vec3(.2,.1,.08),n);
     c=mix(c,vec3(1.,.48,.1),k);
     return vec4(c,(1.-k)*.6+n*.4);`,
+  circuit: `
+    vec3 q,r;float f=warp(d*1.6+seed,q,r);
+    float lon=atan(d.z,d.x)*9.549;float lat=asin(clamp(d.y,-1.,1.))*9.549;
+    vec2 g=vec2(lon,lat)+(q.xy-.5)*1.4;vec2 cell=abs(fract(g)-.5);
+    float trace=(1.-smoothstep(.02,.06,min(cell.x,cell.y)))*step(.42,noise(vec3(floor(g),seed)));
+    float node=1.-smoothstep(.05,.11,length(fract(g*2.)-.5));node*=step(.7,noise(vec3(floor(g*2.),seed+3.)));
+    vec3 c=mix(vec3(.01,.04,.06),vec3(.03,.12,.15),smoothstep(.3,.7,f));
+    c=mix(c,vec3(.35,1.,.85),max(trace,node)*.9);
+    return vec4(c,.45+f*.2-trace*.15);`,
   bleach: `
     vec3 q,r;float f=warp(d*1.9+seed,q,r);
     vec3 c=mix(vec3(.012,.01,.022),vec3(.34,.018,.05),smoothstep(.26,.58,f));

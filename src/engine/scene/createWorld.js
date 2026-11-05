@@ -9,7 +9,7 @@ import { applyBakedTexture, createBodyMaterial, createHaloMaterial, createRingMa
 // How strongly each surface shows terrain relief, large-scale and up close.
 const TERRAIN_BUMP = { ocean: 1.4, rust: 3, banded: 0, ringed: 0, ice: 1.6, lava: 3 };
 const FINE_BUMP = { ocean: 0.5, rust: 1.1, banded: 0, ringed: 0, ice: 0.5, lava: 0.9, kombat: 0.9 };
-const SHINE = { blaugrana: 0.1, kombat: 0.55, vinyl: 0.3, bleach: 0.18 };
+const SHINE = { blaugrana: 0.1, kombat: 0.55, vinyl: 0.3, bleach: 0.18, circuit: 0.35 };
 
 // Builds everything in the solar system. Each create function below adds one kind of object.
 export function createWorld(canvas, bodies) {
@@ -323,7 +323,7 @@ function createInterestPlanets({ scene, baker, sphere, lowSphere, lowSize, highS
       atm: interest.color,
       light: interest.light,
       ambient: 0.035,
-      emit: surface === 'lava' || surface === 'kombat' ? 1.15 : 0,
+      emit: surface === 'lava' || surface === 'kombat' || surface === 'circuit' ? 1.15 : 0,
       detailBump: FINE_BUMP[surface] || 0,
       gloss: SHINE[surface] || 0,
     }));

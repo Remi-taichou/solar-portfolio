@@ -3,8 +3,9 @@
 //   accent:  the colour of the small heading
 //   isLong:  lets long text scroll inside the stop on short screens
 //   isRole:  a shorter section, used for the resume stars
+//   isDense: a darker backing on phones, for stops with a lot of text over a bright body
 // The engine finds these through data-stop and data-stop-inner and fades them as you scroll.
-export default function Stop({ side = 'left', accent = 'var(--color-sol)', eyebrow, isLong = false, isRole = false, children }) {
+export default function Stop({ side = 'left', accent = 'var(--color-sol)', eyebrow, isLong = false, isRole = false, isDense = false, children }) {
   return (
     <section data-stop style={{ '--accent': accent }} className={`relative ${isRole ? 'h-[135lvh]' : 'h-[190lvh]'}`}>
       <div
@@ -13,7 +14,7 @@ export default function Stop({ side = 'left', accent = 'var(--color-sol)', eyebr
           'sticky top-0 flex h-svh items-center pr-(--gutter-r) pl-(--gutter-l) pt-[90px] pb-[100px]',
           'max-desk:items-end max-desk:pb-[76px] short:pt-[70px] short:pb-[60px]',
           side === 'right' ? 'justify-end max-desk:justify-start shade-right' : 'shade-left',
-          isRole ? 'shade-role' : '',
+          isRole || isDense ? 'shade-role' : '',
         ].join(' ')}
       >
         <div
@@ -56,7 +57,14 @@ export function FactList({ rows }) {
 export function BulletPoints({ points, hasDivider = true }) {
   return (
     <ul className={`grid list-disc gap-[9px] pl-[1.1em] text-[.9375rem] leading-normal max-desk:gap-[7px] max-desk:text-sm ${hasDivider ? 'border-t border-line pt-3.5 max-desk:pt-2.5' : ''}`}>
-      {points.map((point) => <li key={point}>{point}</li>)}
+      {points.map((point) => <li key={point}><WithCode text={point} /></li>)}
     </ul>
   );
+}
+
+// Shows words wrapped in `backticks` as code, so useState reads as useState.
+function WithCode({ text }) {
+  return text.split('`').map((part, i) => (
+    i % 2 ? <code key={i} className="rounded bg-white/10 px-1 py-px font-mono text-[.85em]">{part}</code> : part
+  ));
 }
