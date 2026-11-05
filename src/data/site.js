@@ -121,7 +121,7 @@ export const SITE = {
       badge: "Hackathon", event: "Global Qollab Quantum Hackathon", context: "Built for the Global Qollab hackathon",
       links: [{ label: "Play the game", url: "https://beatthequantum.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Quollab-Hackathon" }], points: [
         "Designed, built, and published a CHSH-game web app solo for the Global Qollab quantum hackathon, including the quantum logic, interface, and demo video",
-        "Deployed on Streamlit Community Cloud with source on GitHub, and submitted before the deadline",
+        "Deployed on Vercel with source on GitHub, and submitted before the deadline",
       ] },
     { name: "Activate Arcade Website", date: "2026", stack: "HTML, CSS, Linux, SSH/SCP, Git, GitHub Pages", surface: "banded", size: .05, color: "#e6bf92",
       links: [{ label: "View site", url: "https://remi-taichou.github.io/activate-arcade-site/" }], points: [
