@@ -129,7 +129,7 @@ export const SITE = {
         "Structured and styled multiple pages for consistent layout and navigation across the site",
         "Deployed the site to a Linux server via SSH/SCP and to GitHub Pages, managing version history with Git and GitHub",
       ] },
-    { name: "Personal Portfolio Website v1", short: "Portfolio v1", date: "2026", stack: "HTML, CSS, Git, GitHub Pages", surface: "ice", size: .03, color: "#aee4f2",
+    { name: "Personal Portfolio Website v1", short: "Portfolio v1", date: "Jul 2026", stack: "HTML, CSS, Git, GitHub Pages", surface: "ice", size: .03, color: "#aee4f2",
       links: [{ label: "Live site", url: "https://remi-taichou.github.io/Portfolio/" }, { label: "Code", url: "https://github.com/Remi-taichou/Portfolio" }], points: [
         "Designed and built my first personal portfolio by hand in plain HTML and CSS, with no frameworks",
         "Structured the content with semantic HTML, including page layout, attributes, images and tables",
