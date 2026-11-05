@@ -52,7 +52,7 @@ function setOverviewStop(path, state, tanV, aspect, isPhone) {
   const distance = Math.max(reach / (tanV * aspect), (reach * 0.74) / tanV);
   const elevation = isPhone ? 0.95 : 0.44;
   path.dayPos[0].set(0, Math.sin(elevation) * distance, Math.cos(elevation) * distance);
-  path.dayLook[0].set(0, isPhone ? 0 : -maxOrbit * 0.1, 0);
+  path.dayLook[0].set(0, isPhone ? 0 : -maxOrbit * 0.17, 0);
   return distance;
 }
 

@@ -110,24 +110,30 @@ export const SITE = {
     ],
   },
   projects: [
-    { name: "Personal Portfolio Website", date: "Oct 2026 – Present", stack: "React, JavaScript, Vite, CSS, Git, Vercel", surface: "ocean", size: .036, color: "#7cc0ee",
+    { name: "Personal Portfolio Website v2", short: "Portfolio v2", date: "Oct 2026", stack: "React, JavaScript, Vite, CSS, Git, Vercel", surface: "ocean", size: .036, color: "#7cc0ee",
       links: [{ label: "Live site", url: "https://remitaichou.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Portfolio-v2" }], points: [
         "Built and deployed a responsive portfolio in React (Vite) using reusable components that render from a single project data array",
         "Implemented a mobile navigation menu and a project category filter with `useState`, plus a scrollable project carousel using `useRef`",
         "Created a canvas-based lightning and rain animation with `useEffect` cleanup and `prefers-reduced-motion` support",
         "Set up continuous deployment through GitHub and Vercel, so every push to main publishes automatically",
       ] },
-    { name: "Beat the Quantum: CHSH Quantum Game", short: "Beat the Quantum", date: "Oct 2026", stack: "Python, Streamlit, Git", surface: "ringed", size: .042, color: "#efdda9",
+    { name: "Beat the Quantum: CHSH Quantum Game", short: "Beat the Quantum", date: "Oct 2026", stack: "Python, Qiskit, Streamlit, Pandas, Git, GitHub", surface: "ringed", size: .042, color: "#efdda9",
       badge: "Hackathon", event: "Global Qollab Quantum Hackathon", context: "Built for the Global Qollab hackathon",
       links: [{ label: "Play the game", url: "https://beatthequantum.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Quollab-Hackathon" }], points: [
         "Designed, built, and published a CHSH-game web app solo for the Global Qollab quantum hackathon, including the quantum logic, interface, and demo video",
         "Deployed on Vercel with source on GitHub, and submitted before the deadline",
       ] },
-    { name: "Activate Arcade Website", date: "2026", stack: "HTML, CSS, Linux, SSH/SCP, Git, GitHub Pages", surface: "banded", size: .05, color: "#e6bf92",
+    { name: "Activate Arcade Website", date: "Sep 2026", stack: "HTML, CSS, Linux, SSH/SCP, Git, GitHub Pages", surface: "banded", size: .05, color: "#e6bf92",
       links: [{ label: "View site", url: "https://remi-taichou.github.io/activate-arcade-site/" }], points: [
         "Built a 4-page HTML/CSS website incorporating forms, tables, and picture-based navigation, achieving full marks in the Web Development course",
         "Structured and styled multiple pages for consistent layout and navigation across the site",
         "Deployed the site to a Linux server via SSH/SCP and to GitHub Pages, managing version history with Git and GitHub",
+      ] },
+    { name: "Personal Portfolio Website v1", short: "Portfolio v1", date: "2026", stack: "HTML, CSS, Git, GitHub Pages", surface: "ice", size: .03, color: "#aee4f2",
+      links: [{ label: "Live site", url: "https://remi-taichou.github.io/Portfolio/" }, { label: "Code", url: "https://github.com/Remi-taichou/Portfolio" }], points: [
+        "Designed and built my first personal portfolio by hand in plain HTML and CSS, with no frameworks",
+        "Structured the content with semantic HTML, including page layout, attributes, images and tables",
+        "Published it on GitHub Pages and managed its version history with Git",
       ] },
   ],
 };
