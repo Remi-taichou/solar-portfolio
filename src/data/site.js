@@ -119,7 +119,7 @@ export const SITE = {
       ] },
     { name: "Beat the Quantum: CHSH Quantum Game", short: "Beat the Quantum", date: "Oct 2026", stack: "Python, Qiskit, Streamlit, Pandas, Git, GitHub", surface: "ringed", size: .042, color: "#efdda9",
       badge: "Hackathon", event: "Global Qollab Quantum Hackathon", context: "Built for the Global Qollab hackathon",
-      links: [{ label: "Play the game", url: "https://beatthequantum.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Quollab-Hackathon" }], points: [
+      links: [{ label: "Play the game", url: "https://beatthequantum.vercel.app" }, { label: "Code", url: "https://github.com/Remi-taichou/Global-Qollab-Quantum-Hackathon" }], points: [
         "Designed, built, and published a CHSH-game web app solo for the Global Qollab quantum hackathon, including the quantum logic, interface, and demo video",
         "Deployed on Vercel with source on GitHub, and submitted before the deadline",
       ] },
